@@ -7,20 +7,21 @@
   </div>
 </template>
 
-<script>
+<script>   
+
   export default {
       name: 'App',
       data() {
           return {
               authenticated: false,
-              mockAccount: {
-                  username: "nraboy",
-                  password: "password"
-              }
+              globalUser: "",
+              users: []
           }
       },
       mounted() {
-          if(!this.authenticated) {
+        const users = require("../src/users.json")
+        this.users= users.users
+          if(!this.authenticated && this.$route.fullPath != "/register") {
               this.$router.replace({ name: "login" });
           }
       },
@@ -35,16 +36,12 @@
   }
 </script>
 
-<style>
-  body {
-      background-color: #F0F0F0;
-  }
-  h1 {
-      padding: 0;
-      margin-top: 0;
-  }
-  #app {
-      width: 1024px;
-      margin: auto;
-  }
+<style lang='scss' scope>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 400;
+    }
 </style>

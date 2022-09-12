@@ -1,12 +1,12 @@
 <template>
-    <div id="login">
-        <div class="container-login">
-            <h1>LOGIN</h1>
+    <div id="register">
+        <div class="container-register">
+            <h1>register</h1>
             <label for="username">username</label>
             <input type="text" name="username" v-model="input.username" placeholder="Username" />
             <label for="password">password</label>
             <input type="password" name="password" v-model="input.password" placeholder="Password" />
-            <button type="button" v-on:click="login()">Login</button>
+            <button type="button" v-on:click="register()">register</button>
             <div class="alert">
                 {{alert}}
             </div>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: 'LoginView',
+        name: 'RegisterView',
         data() {
             return {
                 alert: "",
@@ -27,44 +27,47 @@
             }
         },
         methods: {
-            login() {
+            register() {
                 if(this.input.username != "" && this.input.password != "") {
-                    const userLogin = {
+                    const newUser = {
                         "username": this.input.username,
                         "password": this.input.password
                     }
-                    if(this.searchInJson(userLogin)) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "profile" });
+                    // here in the backend i send the new user
+                    if (this.createUserJson(newUser)) {  
+                        this.alert == "you have successfully registered"
+                        setTimeout(() => {
+                            this.$router.replace({ name: "login" });
+                        }, 2000);
                     } else {
-                        this.alert = "The username and / or password is incorrect";
+                        this.alert = "Error creating the new user";    
                     }
                 } else {
                     this.alert = "A username and password must be present";
                 }
             },
-            searchInJson(userLogin){
-                let userFinded = false
-                this.$parent.users.forEach(user => {
-                    if (user.username == userLogin.username && user.password == userLogin.password) {
-                        this.$parent.globalUser = userLogin
-                        userFinded = true
-                    }
-                });
-                return userFinded
+            createUserJson(newUser){
+                try {
+                    this.$parent.users.push(newUser)
+                    this.$parent.globalUser = newUser
+                    return true
+                } catch (error) {
+                    this.alert = "user could not be created"
+                    return false
+                }
             }
         }
     }
 </script>
 <style scoped lang="scss">
-    #login{
+    #register{
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         background: url(@/assets/images/bg-login.jpg) center no-repeat;
         background-size: cover;
-        .container-login{
+        .container-register{
             min-width: 400px;
             background: #fff;
             padding: 30px;
