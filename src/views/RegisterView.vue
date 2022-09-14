@@ -2,8 +2,12 @@
     <div id="register">
         <div class="container-register">
             <h1>register</h1>
-            <label for="username">username</label>
+            <label for="username">Name</label>
             <input type="text" name="username" v-model="input.username" placeholder="Username" />
+            <label for="Age">age</label>
+            <input type="text" name="Age" v-model="input.age" placeholder="Age" />
+            <label for="email">email</label>
+            <input type="text" name="email" v-model="input.email" placeholder="email" />
             <label for="password">password</label>
             <input type="password" name="password" v-model="input.password" placeholder="Password" />
             <button type="button" v-on:click="register()">register</button>
@@ -15,33 +19,34 @@
 </template>
 
 <script>
+    import { mapState } from "vuex"
+    import axios from "axios"
     export default {
         name: 'RegisterView',
         data() {
             return {
                 alert: "",
                 input: {
-                    username: "",
-                    password: ""
+                    "username": "carlos",
+                    "age": 22,
+                    "email": "carloscumaco5@gmail.com",
+                    "password": "123123"
                 }
             }
         },
         methods: {
             register() {
+                console.log(this.urlServer);
                 if(this.input.username != "" && this.input.password != "") {
-                    const newUser = {
-                        "username": this.input.username,
-                        "password": this.input.password
-                    }
-                    // here in the backend i send the new user
-                    if (this.createUserJson(newUser)) {  
-                        this.alert == "you have successfully registered"
-                        setTimeout(() => {
-                            this.$router.replace({ name: "login" });
-                        }, 2000);
-                    } else {
-                        this.alert = "Error creating the new user";    
-                    }
+                    axios
+                    .post(`${this.urlServer}users`, this.input, {"headers": this.headers})
+                    .then(function (response) {
+                        console.log(response,"response");
+                    })
+                    .catch(function (error) {
+                        console.log(error, "error");
+                    })
+                    
                 } else {
                     this.alert = "A username and password must be present";
                 }
@@ -56,57 +61,10 @@
                     return false
                 }
             }
-        }
+        },
+        computed: mapState(["urlServer","headers"])
     }
 </script>
-<style scoped lang="scss">
-    #register{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url(@/assets/images/bg-login.jpg) center no-repeat;
-        background-size: cover;
-        .container-register{
-            min-width: 400px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 30px;
-            text-align: center;
-            h1{
-                margin-bottom: 30px;
-                font-weight: bold;
-            }
-            input{
-                width: 100%;
-                margin: 15px 0;
-                display: block;
-                border-radius: 3px;
-                border: 0;
-                padding: 10px;
-                background: rgb(218, 218, 218);
-                color: #000;
-                &::placeholder{
-                    color: #000;
-                }
-            }
-            label{
-                text-align: left;
-                display: block;
-                font-weight: bold;
-            }
-            button{
-                margin-top: 30px;
-                border-radius: 3px;
-                width: 100%;
-                display: block;
-                padding: 10px;
-                border: 0;
-                background: rgb(54, 168, 255);
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 1rem;
-            }
-        }
-    }
+<style lang="scss">
+    @import "@/styles/main.scss";
 </style>

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    
     export default {
         name: 'LoginView',
         data() {
@@ -29,16 +30,13 @@
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    const userLogin = {
-                        "username": this.input.username,
-                        "password": this.input.password
-                    }
-                    if(this.searchInJson(userLogin)) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "profile" });
-                    } else {
-                        this.alert = "The username and / or password is incorrect";
-                    }
+                    // const userLogin = {
+                    //     "username": this.input.username,
+                    //     "password": this.input.password
+                    // }
+                    // login
+
+
                 } else {
                     this.alert = "A username and password must be present";
                 }
@@ -56,54 +54,6 @@
         }
     }
 </script>
-<style scoped lang="scss">
-    #login{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url(@/assets/images/bg-login.jpg) center no-repeat;
-        background-size: cover;
-        .container-login{
-            min-width: 400px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 30px;
-            text-align: center;
-            h1{
-                margin-bottom: 30px;
-                font-weight: bold;
-            }
-            input{
-                width: 100%;
-                margin: 15px 0;
-                display: block;
-                border-radius: 3px;
-                border: 0;
-                padding: 10px;
-                background: rgb(218, 218, 218);
-                color: #000;
-                &::placeholder{
-                    color: #000;
-                }
-            }
-            label{
-                text-align: left;
-                display: block;
-                font-weight: bold;
-            }
-            button{
-                margin-top: 30px;
-                border-radius: 3px;
-                width: 100%;
-                display: block;
-                padding: 10px;
-                border: 0;
-                background: rgb(54, 168, 255);
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 1rem;
-            }
-        }
-    }
+<style lang="scss">
+    @import "@/styles/main.scss";
 </style>

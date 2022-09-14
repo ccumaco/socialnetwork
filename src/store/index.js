@@ -5,6 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    urlServer: "http://localhost:3000/api/1.0/",
+    headers: {
+      "Authorization": "123456",
+      "Content-Type": "application/json"
+    }
   },
   getters: {
   },
