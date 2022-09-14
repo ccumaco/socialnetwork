@@ -3,7 +3,7 @@
     <div class="post-card__information">
       <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
       <h2 class="post-card__name">
-        {{data.author.name}}
+        {{data.author.name ? data.author.name : namePost}}
         <span>
           {{data.date}}
         </span>
@@ -52,7 +52,7 @@ import { mapState } from "vuex";
 import axios from 'axios';
   export default {
     name: "post-card",
-    props: ["data"],
+    props: ["data", "namePost"],
     // components: { CommentInPost }
     methods:{
       postComment(){

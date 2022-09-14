@@ -1,24 +1,27 @@
 <template>
-    <div id="secure">
-        <h1>Profile</h1>
-        <pre>{{allPost}}</pre>
-        <PostCard v-for="(item,index) in allPost.posts" :key="index" :data="item"/>
+    <div id="secure" class="container">
+        <h1>¡Hola de vuelta {{allPost.name}}!</h1>
+        <FormUser v-if="editProfile"/>
+        <PostCard  v-for="(item,index) in allPost.posts" :key="index" :data="item" :namePost="allPost.name"/>
     </div>
 </template>
 
 <script>
-    import PostCard from "@/components/postCardComponent/postCard.vue"
+    import FormUser from "@/components/formUserComponent/formUser"
+    import PostCard from "@/components/postCardComponent/postCard"
     import axios from "axios"
     import { mapState } from "vuex"
     export default {
         name: 'ProfileView',
         data(){
             return{
-                allPost: []
+                allPost: [],
+                editProfile: true
             }
         },
         components:{
-            PostCard
+            PostCard,
+            FormUser
         },
         mounted() {
             this.loadProfile()
