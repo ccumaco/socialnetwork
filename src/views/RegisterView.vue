@@ -29,7 +29,7 @@
                 input: {
                     "username": "carlos",
                     "age": 22,
-                    "email": "carloscumaco5@gmail.com",
+                    "email": "carloscumaco3@gmail.com",
                     "password": "123123"
                 }
             }
@@ -40,11 +40,13 @@
                 if(this.input.username != "" && this.input.password != "") {
                     axios
                     .post(`${this.urlServer}users`, this.input, {"headers": this.headers})
-                    .then(function (response) {
-                        console.log(response,"response");
+                    .then( () => {
+                        this.$router.push("/login")
+                        this.alert = "se a creado el usuario correctamente"
                     })
-                    .catch(function (error) {
-                        console.log(error, "error");
+                    .catch((err) => {
+                        this.alert = "hubo un error al crear el usuario"
+                        console.log(err);
                     })
                     
                 } else {

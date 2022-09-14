@@ -1,0 +1,65 @@
+$primary-color: #242526;
+$white: #fff;
+$black: #000;
+.post-card{
+    background-color: $primary-color;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+    &__information{
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 30px;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+    }
+    &__name{
+        color: $white;
+        span{
+            display: block;
+            font-size: calc(1rem - 5px);
+        }
+    }
+    &__content{
+        color: $white;
+        padding: 20px 0;
+    }
+    &__options{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--option{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0 10px;
+            img{
+                margin-right: 10px;
+                width: 30px;
+                height: 30px;
+            }
+            &.like{
+
+            }
+        }
+    }
+    .cotainer-comment{
+        input{
+            margin-top: 20px;
+            border-radius: 10px;
+            padding: 20px;
+            border: 0;
+            outline: none;
+            display: block;
+            width: 100%;
+            color: $black;
+            &::placeholder{
+                color: $black;
+            }
+        }
+    }
+}

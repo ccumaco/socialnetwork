@@ -2,8 +2,8 @@
     <div id="login">
         <div class="container-login">
             <h1>LOGIN</h1>
-            <label for="username">username</label>
-            <input type="text" name="username" v-model="input.username" placeholder="Username" />
+            <label for="email">email</label>
+            <input type="text" name="email" v-model="input.email" placeholder="email" />
             <label for="password">password</label>
             <input type="password" name="password" v-model="input.password" placeholder="Password" />
             <button type="button" v-on:click="login()">Login</button>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+    import { mapState } from "vuex"
+    import axios from "axios"
     
     export default {
         name: 'LoginView',
@@ -22,36 +24,31 @@
             return {
                 alert: "",
                 input: {
-                    username: "",
-                    password: ""
+                    "email": "carloscumaco3@gmail.com",
+                    "password": "123123"
                 }
             }
         },
         methods: {
             login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    // const userLogin = {
-                    //     "username": this.input.username,
-                    //     "password": this.input.password
-                    // }
-                    // login
-
-
+                if(this.input.email != "" && this.input.password != "") {
+                    axios
+                    .post(`${this.urlServer}auth/login`, this.input, {"headers": this.headers})
+                    .then( () => {
+                        this.$emit("authenticated", true);
+                        this.$router.replace({name: "HomeView"})
+                        this.alert = "se a creado el usuario correctamente"
+                    })
+                    .catch((err) => {
+                        this.alert = "hubo un error al crear el usuario"
+                        console.log(err);
+                    })
                 } else {
-                    this.alert = "A username and password must be present";
+                    this.alert = "A email and password must be present";
                 }
             },
-            searchInJson(userLogin){
-                let userFinded = false
-                this.$parent.users.forEach(user => {
-                    if (user.username == userLogin.username && user.password == userLogin.password) {
-                        this.$parent.globalUser = userLogin
-                        userFinded = true
-                    }
-                });
-                return userFinded
-            }
-        }
+        },
+        computed: mapState(["urlServer","headers"])
     }
 </script>
 <style lang="scss">
