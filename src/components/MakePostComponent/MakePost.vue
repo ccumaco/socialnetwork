@@ -29,6 +29,8 @@
                 .then( (response) => {
                     console.log(response);
                     this.allPost = response.data.data
+                    console.log("esto si lo hace");
+                    this.$emit("loadNewPost")
                 })
             }
         }

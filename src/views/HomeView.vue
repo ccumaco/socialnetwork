@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
     <h1>VER TODOS LOS POST</h1>
-    <MakePost />
+    <MakePost  @loadNewPost="loadData()"/>
     <postCard v-for="(item,index) in allPost" :key="index" :data="item"/>
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
         console.log(response);
         this.allPost = response.data.data
       })
+      console.log("aqui cargo");
     }
   },
   computed: mapState(["urlServer","headers"])

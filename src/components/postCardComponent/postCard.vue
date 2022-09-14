@@ -64,6 +64,7 @@ import axios from 'axios';
         .catch(err =>{
           console.log(err);
         })
+
       }
     },
     computed: mapState(["user"])
