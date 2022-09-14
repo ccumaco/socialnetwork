@@ -10,6 +10,8 @@
             <div class="alert">
                 {{alert}}
             </div>
+            <p>¿no tienes una cuenta?</p>
+            <router-link to="/register">Registrate</router-link>
         </div>
     </div>
 </template>

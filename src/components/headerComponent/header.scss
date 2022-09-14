@@ -1,0 +1,14 @@
+nav{
+   display: flex;
+   justify-content: space-evenly;
+   width: 100%;
+   background: rgb(54, 168, 255);
+   padding: 10px;
+   position: sticky;
+   top: 0;
+   a{
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+   }
+}
