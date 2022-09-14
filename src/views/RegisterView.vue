@@ -2,8 +2,8 @@
     <div id="register">
         <div class="container-register">
             <h1>register</h1>
-            <label for="username">Name</label>
-            <input type="text" name="username" v-model="input.username" placeholder="Username" />
+            <label for="name">Name</label>
+            <input type="text" name="name" v-model="input.name" placeholder="name" />
             <label for="Age">age</label>
             <input type="text" name="Age" v-model="input.age" placeholder="Age" />
             <label for="email">email</label>
@@ -27,7 +27,7 @@
             return {
                 alert: "",
                 input: {
-                    "username": "carlos",
+                    "name": "carlos",
                     "age": 22,
                     "email": "carloscumaco3@gmail.com",
                     "password": "123123"
@@ -37,9 +37,9 @@
         methods: {
             register() {
                 console.log(this.urlServer);
-                if(this.input.username != "" && this.input.password != "") {
+                if(this.input.name != "" && this.input.password != "") {
                     axios
-                    .post(`${this.urlServer}users`, this.input, {"headers": this.headers})
+                    .post(`${this.urlServer}auth/register`, this.input, {"headers": this.headers})
                     .then( () => {
                         this.$router.push("/login")
                         this.alert = "se a creado el usuario correctamente"
@@ -50,7 +50,7 @@
                     })
                     
                 } else {
-                    this.alert = "A username and password must be present";
+                    this.alert = "A name and password must be present";
                 }
             },
             createUserJson(newUser){

@@ -1,10 +1,10 @@
 <template>
-    <div>
-        Hacer un post
-        <input type="text" v-model="content" >
-        <button @click="createPost">crear Post</button>
-        <pre>{{user}}</pre>
+    <div class="container-create-post">
+        <label for="post">¿QUE ESTAS PENSANDO?</label>
+        <input type="text" v-model="content" name="post" placeholder="Cuentanos algo">
+        <button @click="createPost" :disabled="content.length < 3">crear Post</button>       
     </div>
+    
 </template>
 <script>
     import axios from 'axios';
@@ -34,3 +34,6 @@
         }
     }
 </script>
+<style lang='scss'>
+    @import "./MakePost.scss";
+</style>

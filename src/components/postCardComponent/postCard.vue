@@ -3,7 +3,7 @@
     <div class="post-card__information">
       <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
       <h2 class="post-card__name">
-        {{data.name}}
+        {{data.author.name}}
         <span>
           {{data.date}}
         </span>
@@ -58,9 +58,11 @@ import axios from 'axios';
       postComment(){
         axios
         .get(`${this.urlServer}posts`, {"headers": this.headers})
-        .then( (response) => {
-          console.log(response);
+        .then( response => {
           this.allPost = response.data.data
+        })
+        .catch(err =>{
+          console.log(err);
         })
       }
     },

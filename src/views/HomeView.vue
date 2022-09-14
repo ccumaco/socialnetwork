@@ -23,7 +23,7 @@ export default {
     postCard,
     MakePost
   },
-  async mounted() {
+  mounted() {
     this.loadData()
   },
   methods:{
