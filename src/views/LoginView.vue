@@ -34,7 +34,8 @@
                 if(this.input.email != "" && this.input.password != "") {
                     axios
                     .post(`${this.urlServer}auth/login`, this.input, {"headers": this.headers})
-                    .then( () => {
+                    .then( (response) => {
+                        this.$store.state.user = response.data.data
                         this.$emit("authenticated", true);
                         this.$router.replace({name: "HomeView"})
                         this.alert = "se a creado el usuario correctamente"

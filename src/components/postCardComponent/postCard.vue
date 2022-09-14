@@ -42,16 +42,30 @@
         id="comment"
         placeholder="write your comment"
       >
-      <img class="profile" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
-      
+      <!-- <CommentInPost v-for="(item,index) in data.allComments" :key="index" :data="item"/> -->
     </div>
   </div>
 </template>
 <script>
+// import CommentInPost from "../commentInPostComponent/commentInPost.vue"
+import { mapState } from "vuex";
+import axios from 'axios';
   export default {
-    name:"post-card",
-    props: ["data"]
-  }
+    name: "post-card",
+    props: ["data"],
+    // components: { CommentInPost }
+    methods:{
+      postComment(){
+        axios
+        .get(`${this.urlServer}posts`, {"headers": this.headers})
+        .then( (response) => {
+          console.log(response);
+          this.allPost = response.data.data
+        })
+      }
+    },
+    computed: mapState(["user"])
+}
 </script>
 <style lang="scss" scoped>
 @import "postCard";

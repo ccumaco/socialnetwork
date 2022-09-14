@@ -1,12 +1,14 @@
 <template>
   <div class="home container">
     <h1>VER TODOS LOS POST</h1>
+    <MakePost />
     <postCard v-for="(item,index) in allPost" :key="index" :data="item"/>
   </div>
 </template>
 
 <script>
   import postCard from "@/components/postCardComponent/postCard.vue"
+  import MakePost from "@/components/MakePostComponent/MakePost.vue"
   import axios from "axios"
   import { mapState } from "vuex"
 
@@ -18,7 +20,8 @@ export default {
     }
   },
   components: {
-    postCard
+    postCard,
+    MakePost
   },
   async mounted() {
     this.loadData()

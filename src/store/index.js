@@ -9,7 +9,8 @@ export default new Vuex.Store({
     headers: {
       "Authorization": "123456",
       "Content-Type": "application/json"
-    }
+    },
+    user: {}
   },
   getters: {
   },
