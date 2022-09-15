@@ -1,9 +1,10 @@
-$primary-color: #242526;
+$primary-color: #d3d3d3;
 $white: #fff;
 $black: #000;
+$color_text: #141414;
 .post-card{
     background-color: $primary-color;
-    margin: 10px 0;
+    margin: 30px 0;
     padding: 20px;
     border-radius: 10px;
     &__information{
@@ -18,26 +19,41 @@ $black: #000;
         }
     }
     &__name{
-        color: $white;
+        color: $color_text;
+        font-weight: bold;
         span{
             display: block;
             font-size: calc(1rem - 5px);
         }
     }
     &__content{
-        color: $white;
+        color: $color_text;
         padding: 20px 0;
     }
     &__options{
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         &--option{
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: fit-content;
             margin: 0 10px;
+            padding: 5px 30px;
+            border-radius: 10px;
+            border: 1px solid #004c00;
+            color: #004c00;
+            &:first-child{
+                margin-left: 0;
+            }
+            &:last-child{
+                padding: 10px 18px;
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+            } 
             img{
                 margin-right: 10px;
                 width: 30px;
@@ -52,15 +68,28 @@ $black: #000;
         input{
             margin-top: 20px;
             border-radius: 10px;
-            padding: 20px;
+            padding: 0 20px;
             border: 0;
+            min-height: 80px;
+            border-radius: 5px;
             outline: none;
             display: block;
             width: 100%;
             color: $black;
+            margin-bottom: 10px;
             &::placeholder{
                 color: $black;
+                transform: translateY(-10px);
             }
+        }
+        .comment-btn{
+            border: 0;
+            outline: 0;
+            background-color: #004c00;
+            color: $white;
+            border-radius: 5px;
+            padding: 8px 18px;
+            font-weight: 600;
         }
     }
 }

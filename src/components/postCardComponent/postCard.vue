@@ -41,7 +41,7 @@
         v-model="comment"
         v-on:keyup.enter.prevent="createComment()"
       />
-      <button @click="createComment()">Comentar</button>
+      <button class="comment-btn" @click="createComment()">Comentar</button>
       <CommentsPost
         v-show="flagComment"
         v-for="(item, index) in data.comments"
