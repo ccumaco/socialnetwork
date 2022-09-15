@@ -1,7 +1,7 @@
 <template>
   <div class="post-card">
     <div class="post-card__information">
-      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+      <img :src='data.author.image ? data.author.image : "https://cdn-icons-png.flaticon.com/512/149/149071.png"' alt="" />
       <h2 class="post-card__name">
         {{ data.author ? data.author.name : namePost }}
         <span>

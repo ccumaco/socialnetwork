@@ -3,6 +3,8 @@
         <h1>¿ Deseas actualizar tu perfil? </h1>
         <label for="name">Name</label>
         <input @change="avalibleSend()" type="text" name="name" v-model="user.name" placeholder="name" />
+        <label for="name">picture</label>
+        <input @change="avalibleSend()" type="text" name="image" v-model="user.image" placeholder="image" />
         <label for="Age">age</label>
         <input @change="avalibleSend()" type="number" name="Age" v-model="user.age" placeholder="Age" />
         <label for="email">email</label>
