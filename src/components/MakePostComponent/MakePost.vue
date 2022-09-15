@@ -9,7 +9,7 @@
       v-on:keyup.enter="createPost()"
     />
     <button @click="createPost" :disabled="content.length < 3">
-      crear Post
+      Crear post
     </button>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
     <div id="secure" class="container">
-        <h1>¡Hola de vuelta {{allPost.name}}!</h1>
+        <h1 class="title-profile">¡Hola de vuelta {{allPost.name}}!</h1>
         <FormUser v-if="editProfile"/>
+        <h1 class="title-profile">Estas son tus publicaciones</h1>
         <PostCard  v-for="(item,index) in allPost.posts" :key="index" :data="item" :namePost="allPost.name"/>
     </div>
 </template>
@@ -40,5 +41,6 @@
     }
 </script>
 
-<style scoped>
+<style lang='scss'>
+    @import "@/styles/main.scss";
 </style>

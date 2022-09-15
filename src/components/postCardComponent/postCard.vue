@@ -20,17 +20,7 @@
         />
         {{ data.likes }}
       </button>
-      <button
-        @click="showComments"
-        class="post-card__options--option comment"
-        >
-        <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9imhFQVI1oJf6bp_8fDAqhc6sDTm2Oc4SHJO9htIl&s"
-        alt=""
-        />
-        {{flagComment ? "ocultar comentarios" : "mostrar comentarios"}} 
-        {{ data.comments.length }}
-      </button>
+
     </div>
     <div class="cotainer-comment">
       <input
@@ -42,6 +32,18 @@
         v-on:keyup.enter.prevent="createComment()"
       />
       <button class="comment-btn" @click="createComment()">Comentar</button>
+      <button
+        @click="showComments"
+        class="post-card__options--option comment"
+        >
+        <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9imhFQVI1oJf6bp_8fDAqhc6sDTm2Oc4SHJO9htIl&s"
+        alt=""
+        />
+        {{flagComment ? "ocultar comentarios" : "mostrar comentarios"}} 
+        {{ data.comments.length }}
+      </button>
+      
       <CommentsPost
         v-show="flagComment"
         v-for="(item, index) in data.comments"

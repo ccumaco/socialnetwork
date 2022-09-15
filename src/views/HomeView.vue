@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
-    <h1>VER TODOS LOS POST</h1>
     <MakePost  @loadNewPost="loadData()"/>
+    <h1 class="title-home">Ver todos los post</h1>
     <postCard v-for="(item,index) in allPost" :key="index" :data="item" @loadData="loadData"/>
   </div>
 </template>

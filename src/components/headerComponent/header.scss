@@ -6,9 +6,32 @@ nav{
    padding: 10px;
    position: sticky;
    top: 0;
+   z-index: 5;
    a{
     padding: 10px;
     text-decoration: none;
     color: #fff;
+    font-weight: bold;
+    position: relative;
+    &::before{
+       content: "";
+       transition: all .3s;
+         width: 0;
+         height: 1px;
+         position: absolute;
+         bottom: -5px;
+         left: 0;
+         background-color: #fff;
+      }
+      &:hover::before{
+         width: 100%;
+      }
+   }
+   .logout{
+      background-color: red;
+      border-radius: 3px;
+      &::before{
+         content: none;
+      }
    }
 }

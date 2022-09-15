@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="comment-container">
         {{comments.comment}}
     </div>
 </template>

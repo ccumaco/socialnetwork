@@ -1,15 +1,6 @@
 <template>
   <div id="app">
-    <headerComponent v-if="authenticated" />
-    <div id="nav">
-      <router-link
-        v-if="authenticated"
-        to="/login"
-        v-on:click.native="logout()"
-        replace
-        >Logout</router-link
-      >
-    </div>
+    <headerComponent v-if="authenticated" @logoutUser="logout()"/>
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
@@ -44,7 +35,7 @@ export default {
     setAuthenticated(status) {
       this.authenticated = status;
     },
-    logout() {
+    logout() {     
       this.authenticated = false;
     },
   },

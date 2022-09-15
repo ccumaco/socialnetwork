@@ -1,7 +1,7 @@
 .form-container{
     max-width: 800px;
     background: #fff;
-    padding: 30px;
+    padding: 10px 30px 30px 30px;
     border-radius: 30px;
     text-align: center;
     margin: 0 auto;
@@ -16,7 +16,8 @@
         border-radius: 3px;
         border: 0;
         padding: 10px;
-        background: rgb(218, 218, 218);
+        border: 1px solid rgb(218, 218, 218);
+        background: #fff;
         color: #000;
         &::placeholder{
             color: #000;
@@ -28,15 +29,19 @@
         font-weight: bold;
     }
     button{
-        margin-top: 30px;
-        border-radius: 3px;
-        width: 100%;
         display: block;
-        padding: 10px;
+        background: #009d00;
+        color: #fff;
+        margin: 30px auto 0;
+        padding: 15px 35px;
+        border-radius: 3px;
         border: 0;
-        background: rgb(54, 168, 255);
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 1rem;
+        font-weight: 400;
+        outline: none;
+        font-size: 15px;
+        &:disabled{
+            background-color: #464548;
+            color: gray;
+        }
     }
 }
