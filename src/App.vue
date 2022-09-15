@@ -7,6 +7,7 @@
 
 <script>
 import headerComponent from "@/components/headerComponent/header";
+import { mapState } from "vuex";
 export default {
   name: "App",
   data() {
@@ -14,7 +15,6 @@ export default {
       authenticated: false,
       globalUser: "",
       users: [],
-
     };
   },
   components: {
@@ -35,10 +35,12 @@ export default {
     setAuthenticated(status) {
       this.authenticated = status;
     },
-    logout() {     
+    logout() {
+      this.$store.state.user = {}
       this.authenticated = false;
     },
   },
+  computed: mapState(["urlServer","headers","user"])
 };
 </script>
 

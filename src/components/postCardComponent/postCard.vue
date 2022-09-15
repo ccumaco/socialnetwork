@@ -3,7 +3,7 @@
     <div class="post-card__information">
       <img :src='data.author.image ? data.author.image : "https://cdn-icons-png.flaticon.com/512/149/149071.png"' alt="" />
       <h2 class="post-card__name">
-        {{ data.author ? data.author.name : namePost }}
+        {{ data.author.name ? data.author.name : user.name }}
         <span>
           {{ data.date }}
         </span>
@@ -13,7 +13,7 @@
       {{ data.content }}
     </div>
     <div class="post-card__options">
-      <button class="post-card__options--option like">
+      <button @click="$emit('giveLike',data)" class="post-card__options--option like btn">
         <img
           src="https://i.pinimg.com/originals/96/a2/71/96a27139e8352b383677452d7dd6edd2.jpg"
           alt=""
@@ -27,7 +27,7 @@
         type="text"
         name="comment"
         id="comment"
-        placeholder="write your comment"
+        placeholder="Escribe tu comentario"
         v-model="comment"
         v-on:keyup.enter.prevent="createComment()"
       />

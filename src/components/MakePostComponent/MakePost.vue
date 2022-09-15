@@ -8,8 +8,8 @@
       placeholder="Cuentanos algo"
       v-on:keyup.enter="createPost()"
     />
-    <button @click="createPost" :disabled="content.length < 3">
-      Crear post
+    <button class="btn" @click="createPost" :disabled="content.length < 3">
+      Crear publicación
     </button>
   </div>
 </template>

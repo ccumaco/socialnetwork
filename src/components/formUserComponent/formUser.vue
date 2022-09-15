@@ -11,7 +11,7 @@
         <input @change="avalibleSend()" type="email" name="email" v-model="user.email" placeholder="email" />
         <label for="role">Role</label>
         <input @change="avalibleSend()" type="text" name="role" v-model="user.role" placeholder="role" />
-        <button @click="updateProfile" :disabled='avalibleSend()'>Actualizar perfil</button>
+        <button class="btn" @click="updateProfile" :disabled='avalibleSend()'>Actualizar perfil</button>
         <p>{{alert}}</p>
     </div>
 </template>

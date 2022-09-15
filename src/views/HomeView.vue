@@ -2,7 +2,7 @@
   <div class="home container">
     <MakePost  @loadNewPost="loadData()"/>
     <h1 class="title-home">Ver todos los post</h1>
-    <postCard v-for="(item,index) in allPost" :key="index" :data="item" @loadData="loadData"/>
+    <postCard v-for="(item,index) in allPost" :key="index" :data="item" @loadData="loadData" @giveLike="giveLike()"/>
   </div>
 </template>
 
@@ -27,6 +27,9 @@ export default {
     this.loadData()
   },
   methods:{
+    giveLike(data){
+      console.log(data);
+    },
     loadData(){
       // load all post of all users by date
       axios

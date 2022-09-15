@@ -2,11 +2,11 @@
     <div id="login">
         <div class="container-login">
             <h1>LOGIN</h1>
-            <label for="email">email</label>
-            <input type="text" name="email" v-model="input.email" placeholder="email" />
-            <label for="password">password</label>
+            <label for="email">Correo</label>
+            <input type="email" name="email" v-model="input.email" placeholder="carlos@..." />
+            <label for="password">Contraseña</label>
             <input type="password" name="password" v-model="input.password" placeholder="Password" />
-            <button type="button" v-on:click="login()">Login</button>
+            <button type="button" class="btn" v-on:click="login()">Login</button>
             <div class="alert">
                 {{alert}}
             </div>

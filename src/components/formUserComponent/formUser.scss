@@ -28,20 +28,5 @@
         display: block;
         font-weight: bold;
     }
-    button{
-        display: block;
-        background: #009d00;
-        color: #fff;
-        margin: 30px auto 0;
-        padding: 15px 35px;
-        border-radius: 3px;
-        border: 0;
-        font-weight: 400;
-        outline: none;
-        font-size: 15px;
-        &:disabled{
-            background-color: #464548;
-            color: gray;
-        }
-    }
+
 }
