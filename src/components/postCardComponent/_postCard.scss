@@ -54,14 +54,17 @@ $color_text: #141414;
                     width: 20px;
                     height: 20px;
                 }
-            } 
+            }
+            &.like:focus-within{
+                    background-color: #009d00;
+                    color: $white;
+                }
+            }
             img{
                 margin-right: 10px;
                 width: 30px;
                 height: 30px;
-            }
-            &.like{
-            }
+            
         }
     }
     .cotainer-comment{
