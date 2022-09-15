@@ -1,14 +1,12 @@
 <template>
     <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
-        <div class="text">
-            
-        </div>
+        {{comments.comment}}
     </div>
 </template>
 <script>
     export default {
-        name: "CommentInPost"
+        name: "CommentInPost",
+        props: ["comments"]
     }
 </script>
 <style>

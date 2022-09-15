@@ -1,14 +1,16 @@
 <template>
     <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/register">Registro</router-link>
-        <router-link to="/login">Login</router-link>
+        <router-link to="/" v-if="user">Home</router-link>
+        <router-link to="/profile" v-if="user">Profile</router-link>
+        <router-link to="/register" v-if="!user">Registro</router-link>
+        <router-link to="/login" v-if="!user">Login</router-link>
     </nav>
 </template>
 <script>
+    import { mapState } from "vuex"
     export default {
-        name:"headerComponent"
+        name:"headerComponent",
+        computed: mapState(["urlServer","headers","user"])
     }
 </script>
 <style lang='scss'>

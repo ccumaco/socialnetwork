@@ -27,14 +27,13 @@
             this.loadProfile()
         },
         methods:{
+            // load all post of profile
             loadProfile(){
                 axios
                 .get(`${this.urlServer}users/${this.user._id}`, {"headers": this.headers})
                 .then( (response) => {
-                    console.log(response);
                     this.allPost = response.data.data
                 })
-                console.log("aqui cargo");
             }
         },
         computed: mapState(["urlServer","headers","user"])

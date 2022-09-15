@@ -14,6 +14,8 @@
             <div class="alert">
                 {{alert}}
             </div>
+            <p>¿Ya tienes una cuenta?</p>
+            <router-link to="/login">Login</router-link>
         </div>
     </div>
 </template>
@@ -35,8 +37,8 @@
             }
         },
         methods: {
+            // function to register user
             register() {
-                console.log(this.urlServer);
                 if(this.input.name != "" && this.input.password != "") {
                     axios
                     .post(`${this.urlServer}auth/register`, this.input, {"headers": this.headers})
@@ -51,16 +53,6 @@
                     
                 } else {
                     this.alert = "A name and password must be present";
-                }
-            },
-            createUserJson(newUser){
-                try {
-                    this.$parent.users.push(newUser)
-                    this.$parent.globalUser = newUser
-                    return true
-                } catch (error) {
-                    this.alert = "user could not be created"
-                    return false
                 }
             }
         },

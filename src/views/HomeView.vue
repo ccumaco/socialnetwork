@@ -2,7 +2,7 @@
   <div class="home container">
     <h1>VER TODOS LOS POST</h1>
     <MakePost  @loadNewPost="loadData()"/>
-    <postCard v-for="(item,index) in allPost" :key="index" :data="item"/>
+    <postCard v-for="(item,index) in allPost" :key="index" :data="item" @loadData="loadData"/>
   </div>
 </template>
 
@@ -28,13 +28,12 @@ export default {
   },
   methods:{
     loadData(){
+      // load all post of all users by date
       axios
       .get(`${this.urlServer}posts`, {"headers": this.headers})
       .then( (response) => {
-        console.log(response);
         this.allPost = response.data.data
       })
-      console.log("aqui cargo");
     }
   },
   computed: mapState(["urlServer","headers"])

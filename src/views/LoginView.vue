@@ -32,6 +32,7 @@
             }
         },
         methods: {
+            // login user
             login() {
                 if(this.input.email != "" && this.input.password != "") {
                     axios
