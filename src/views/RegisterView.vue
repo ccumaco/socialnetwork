@@ -10,7 +10,7 @@
             <input type="text" name="email" v-model="input.email" placeholder="email" />
             <label for="password">password</label>
             <input type="password" name="password" v-model="input.password" placeholder="Password" />
-            <button type="button" v-on:click="register()">register</button>
+            <button type="button" class="btn" v-on:click="register()">register</button>
             <div class="alert">
                 {{alert}}
             </div>
